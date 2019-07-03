@@ -25,6 +25,7 @@ public class MailsController implements Serializable  {
     private Mails mail;
     private List<Mails> mailList;
     private Integer numOfMails;
+    private String msg;
     
     @Inject
     private MailsFacade mailOperation;
@@ -51,8 +52,9 @@ public class MailsController implements Serializable  {
     public void save(){
         try{
             mailOperation.create(mail);
+            msg = "Saved Successfully";
         }catch(Exception ex){
-            
+         msg = "Unable to Save the mail"; 
         }
     }
     
