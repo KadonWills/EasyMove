@@ -6,7 +6,6 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,10 +14,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -67,14 +66,17 @@ public class Mails implements Serializable {
     @Size(max = 254)
     @Column(name = "sender_number", length = 254)
     private String senderNumber;
+    @JoinColumns({
+        @JoinColumn(name = "id_", referencedColumnName = "id_"),
+        @JoinColumn(name = "trips_id", referencedColumnName = "trips_id")})
+    @ManyToOne(fetch = FetchType.LAZY)
+    private BusTrips busTrips;
     @JoinColumn(name = "users_id", referencedColumnName = "users_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Users usersId;
     @JoinColumn(name = "use_users_id", referencedColumnName = "users_id", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Users useUsersId;
-    @OneToMany(mappedBy = "mailsId", fetch = FetchType.LAZY)
-    private Collection<BusTrips> busTripsCollection;
 
     public Mails() {
     }
@@ -147,6 +149,14 @@ public class Mails implements Serializable {
         this.senderNumber = senderNumber;
     }
 
+    public BusTrips getBusTrips() {
+        return busTrips;
+    }
+
+    public void setBusTrips(BusTrips busTrips) {
+        this.busTrips = busTrips;
+    }
+
     public Users getUsersId() {
         return usersId;
     }
@@ -161,14 +171,6 @@ public class Mails implements Serializable {
 
     public void setUseUsersId(Users useUsersId) {
         this.useUsersId = useUsersId;
-    }
-
-    public Collection<BusTrips> getBusTripsCollection() {
-        return busTripsCollection;
-    }
-
-    public void setBusTripsCollection(Collection<BusTrips> busTripsCollection) {
-        this.busTripsCollection = busTripsCollection;
     }
 
     @Override

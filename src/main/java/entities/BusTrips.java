@@ -6,6 +6,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -30,15 +32,14 @@ public class BusTrips implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected BusTripsPK busTripsPK;
+    @OneToMany(mappedBy = "busTrips", fetch = FetchType.LAZY)
+    private Collection<Mails> mailsCollection;
     @JoinColumn(name = "id_", referencedColumnName = "id_", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Buses buses;
     @JoinColumn(name = "trips_id", referencedColumnName = "trips_id", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Trips trips;
-    @JoinColumn(name = "mails_id", referencedColumnName = "mails_id")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Mails mailsId;
 
     public BusTrips() {
     }
@@ -59,6 +60,14 @@ public class BusTrips implements Serializable {
         this.busTripsPK = busTripsPK;
     }
 
+    public Collection<Mails> getMailsCollection() {
+        return mailsCollection;
+    }
+
+    public void setMailsCollection(Collection<Mails> mailsCollection) {
+        this.mailsCollection = mailsCollection;
+    }
+
     public Buses getBuses() {
         return buses;
     }
@@ -73,14 +82,6 @@ public class BusTrips implements Serializable {
 
     public void setTrips(Trips trips) {
         this.trips = trips;
-    }
-
-    public Mails getMailsId() {
-        return mailsId;
-    }
-
-    public void setMailsId(Mails mailsId) {
-        this.mailsId = mailsId;
     }
 
     @Override
