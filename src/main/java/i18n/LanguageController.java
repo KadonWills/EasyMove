@@ -16,6 +16,7 @@ public class LanguageController implements Serializable {
     private String locale = "en";
 
     public LanguageController() {
+        
     }
 
     public String english() {
