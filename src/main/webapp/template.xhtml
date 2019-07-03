@@ -145,14 +145,14 @@
                 </ui:insert>
 
                 <ui:insert name="content">
-
-                </ui:insert>
-
-                <ui:insert name="footer">
-
+                    Template
                 </ui:insert>
             </div>            
         </div>
+        <ui:insert name="footer">
+
+        </ui:insert>
+
 
         <ui:insert name="script">
 
@@ -169,6 +169,7 @@
                 $(this).toggleClass("flip-y");
                 $('#nav-sidebar').toggleClass("active");
             });
+            $('.mdb-select').materialSelect();
         </script>
     </h:body>
 
