@@ -144,5 +144,5 @@ public class Agencies implements Serializable {
     public String toString() {
         return "entities.Agencies[ agenciesId=" + agenciesId + " ]";
     }
-    
+        
 }
