@@ -20,64 +20,74 @@ import sessions.MailsFacade;
  * @author nkengasong
  */
 @Named
-public class MailsController implements Serializable  {
-    
+public class MailsController implements Serializable {
+
     private Mails mail;
     private List<Mails> mailList;
     private Integer numOfMails;
+
+    private Mails selectedMail;
+    private List<Mails> filteredMails;
+
     private String msg;
-    
+
     @Inject
     private MailsFacade mailOperation;
-    
-    public MailsController(){
-        
+
+    public MailsController() {
+
     }
-    
-    public void intializeLists(){
+
+    public void intializeLists() {
         mailList.clear();
         mailList.addAll(mailOperation.findAll());
         numOfMails = mailList.size();
     }
-    
+
     @PostConstruct
-    public void init(){
+    public void init() {
         mailList = new ArrayList<>();
         mail = new Mails();
     }
-    
+
     /**
      * Saves a mail using the current persistence unit
      */
-    public void save(){
-        try{
+    public void save() {
+        try {
             mailOperation.create(mail);
             msg = "Saved Successfully";
-        }catch(Exception ex){
-         msg = "Unable to Save the mail"; 
+        } catch (Exception ex) {
+            msg = "Unable to Save the mail";
         }
     }
-    
+    /**
+     * Changes the state of the mail
+     */
+    public void changeMailState(){
+        
+    }
     /**
      * Edits a mail using the current persistence unit
      */
-    
-    public void edit(){
-        try{
+    public void edit() {
+        try {
             mailOperation.edit(mail);
-        }catch(Exception ex){
-            
+            msg = "Edited Successfully";
+        } catch (Exception ex) {
+            msg = "Unable to Edit the mail";
         }
     }
-    
+
     /**
      * Deletes a mail using the current persistence unit
      */
-    public void delete(){
-        try{
+    public void delete() {
+        try {
             mailOperation.remove(mail);
-        }catch(Exception ex){
-            
+            msg = "Deleted Successfully";
+        } catch (Exception ex) {
+            msg = "Unable to Delete the mail";
         }
     }
 
@@ -87,6 +97,30 @@ public class MailsController implements Serializable  {
 
     public void setMail(Mails mail) {
         this.mail = mail;
+    }
+
+    public Mails getSelectedMail() {
+        return selectedMail;
+    }
+
+    public void setSelectedMail(Mails selectedMail) {
+        this.selectedMail = selectedMail;
+    }
+
+    public List<Mails> getFilteredMails() {
+        return filteredMails;
+    }
+
+    public void setFilteredMails(List<Mails> filteredMails) {
+        this.filteredMails = filteredMails;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public List<Mails> getMailList() {
@@ -112,6 +146,5 @@ public class MailsController implements Serializable  {
     public void setNumOfMails(Integer numOfMails) {
         this.numOfMails = numOfMails;
     }
-    
-    
+
 }
