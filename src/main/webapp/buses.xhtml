@@ -9,17 +9,18 @@
 
     <ui:define name="content">
 
-        <h2 class="heading text-center text-uppercase">Agencies</h2>
+        <h2 class="heading text-center text-uppercase">Buses</h2>
+        
         <hr class="hr-dark" />
-
-        <!-- Modal: add Agency -->
-        <div class="modal fade" id="add" tabindex="-1" role="modal" aria-labelledby="Add Agency"
+        
+        <!-- Modal: add Bus -->
+        <div class="modal fade" id="add" tabindex="-1" role="modal" aria-labelledby="Add Bus"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <!--Header-->
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">New Agency</h4>
+                        <h4 class="modal-title" id="myModalLabel">New Bus</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -28,38 +29,33 @@
                     <h:form class=" form-group">
                         <table class="col table ">
                             <tr>
-                                <td>Name :</td>
+                                <td>Bus Number :</td>
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-                                            <input class="form-control mr-sm-2 col-md-9" type="text" placeholder=" " aria-label="Name" value="#{agencyController.agency.name}"></input>
+                                            <input class="form-control mr-sm-2 col-md-9" min="0" type="number" placeholder="#" aria-label="Name" value="#{busesController.buses.number}"></input> 
                                         </div>
                                     </form>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td>Town :</td>
+                                <td>Colour :</td>
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-
-                                            <select class="form-control mr-sm-2 col-md-12 mdb-select md-form">
-                                                <option value="#{agencyController.agency.town}" disabled="true" selected="selected">Choose your option</option>
-                                                <option value="yaounde">Yaounde</option>
-                                                <option value="douala">Douala</option>
-                                            </select>
+                                            <input class="form-control mr-sm-2 col-md-9"  type="text" placeholder="" aria-label="Name" value="#{busesController.buses.colour}"></input>
                                         </div>
                                     </form>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td>Quarter :</td>
+                                <td>Number of sits :</td>
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-                                            <input class="form-control mr-sm-2 col-md-9" type="text" placeholder=" " aria-label="Quarter" value="#{agencyController.agency.quarter}"></input>
+                                            <input class="form-control mr-sm-2 col-md-9" min="35" max="70" type="number" placeholder=" " aria-label="Quarter" value="#{busesController.buses.quarter}"></input>
                                         </div>
                                     </form>
                                 </td>
@@ -70,23 +66,23 @@
                     <!--Footer-->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
-                        <h:commandButton class="btn btn-primary" value = "Add Agency" 
-                                         action = "#{agencyController.create}" />
+                        <h:commandButton class="btn btn-primary" value = "Add Bus" 
+                                         action = "#{busesController.create}" />
 
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Modal: add Agency -->
+        <!-- Modal: add Bus -->
 
-        <!-- Modal: Update Agency -->
-        <div class="modal fade" id="update" tabindex="-1" role="modal" aria-labelledby="Update Agency "
+        <!-- Modal: Update Bus -->
+        <div class="modal fade" id="update" tabindex="-1" role="modal" aria-labelledby="Update Bus "
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <!--Header-->
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Update Agency  #{agencyController.agency.id}</h4>
+                        <h4 class="modal-title" id="myModalLabel">Update Bus  #{busesController.buses.id}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -95,38 +91,33 @@
                     <h:form class=" form-group">
                         <table class="col table ">
                             <tr>
-                                <td>Name :</td>
+                                <td>Bus Number :</td>
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-                                            <input class="form-control mr-sm-2 col-md-9" type="text" placeholder=" " aria-label="Name" value="#{agencyController.agency.name}"></input>
+                                            <input class="form-control mr-sm-2 col-md-9" min="0" type="number" placeholder="#" aria-label="Name" value="#{busesController.buses.number}"></input> 
                                         </div>
                                     </form>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td>Town :</td>
+                                <td>Colour :</td>
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-
-                                            <select class="form-control mr-sm-2 col-md-12 mdb-select md-form" onchange="#{agencyController.agency.town}">
-                                                <option value="" disabled="true" selected="selected">Choose your option</option>
-                                                <option value="yaounde">Yaounde</option>
-                                                <option value="douala">Douala</option>
-                                            </select>
+                                            <input class="form-control mr-sm-2 col-md-9"  type="text" placeholder="" aria-label="Name" value="#{busesController.buses.colour}"></input>
                                         </div>
                                     </form>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td>Quarter :</td>
+                                <td>Number of sits :</td>
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-                                            <input class="form-control mr-sm-2 col-md-9" type="text" placeholder=" " aria-label="Quarter" value="#{agencyController.agency.quarter}"></input>
+                                            <input class="form-control mr-sm-2 col-md-9" min="35" max="70" type="number" placeholder=" " aria-label="Quarter" value="#{busesController.buses.quarter}"></input>
                                         </div>
                                     </form>
                                 </td>
@@ -137,23 +128,23 @@
                     <!--Footer-->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>                      
-                        <h:commandButton class="btn btn-primary" value = "Update Agency" 
-                                         action = "#{agencyController.edit(agencyController.agency.getId)}" />
+                        <h:commandButton class="btn btn-primary" value = "Update Bus" 
+                                         action = "#{busesController.edit(busesController.buses.getId)}" />
 
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Modal: Update Agency -->
+        <!-- Modal: Update Bus -->
 
-        <!-- Modal: Update Agency -->
-        <div class="modal shake " id="delete" tabindex="-1" role="dialog" aria-labelledby="Delete Agency"
+        <!-- Modal: Delete Bus -->
+        <div class="modal shake " id="delete" tabindex="-1" role="dialog" aria-labelledby="Delete Bus"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <!--Header-->
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Deleting Agency  #{agencyController.agency.name}</h4>
+                        <h4 class="modal-title" id="myModalLabel">Deleting Bus  #{busesController.buses.name}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -166,31 +157,31 @@
                     <div class="modal-footer">
 
                         <button class="btn btn-danger" data-dismiss="modal"
-                                onclick="#{agencyController.edit(agencyController.agency.getId)}" >
-                            Delete Agency
+                                onclick="#{busesController.edit(busesController.buses.getId)}" >
+                            Delete Bus
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Modal: Update Agency -->
+        <!-- Modal: Delete Bus -->
 
         <!--/data table  for agents-->
         <div class="row">
             <h:form class="col-md-10">
-                <h:dataTable value="#{agencyController.agencyList}" var="agency" border="0"
+                <h:dataTable value="#{busesController.busesList}" var="buses" border="0"
                              cellspacing="1" cellpadding="1" class="table table-hover " title="List of Agencies">
                     <h:column class="" >
-                        <c:facet name="header" class="">Name</c:facet>
-                            #{agency.name}
+                        <c:facet name="header" class="">Bus Number</c:facet>
+                            #{buses.number}
                     </h:column>
                     <h:column>
-                        <c:facet name="header">Town</c:facet>
-                            #{agency.town}
+                        <c:facet name="header">Color</c:facet>
+                            #{buses.color}
                     </h:column>
                     <h:column>
-                        <c:facet name="header"> Quarter</c:facet>
-                        <i class="fas fa-map-marker-alt"></i> #{agency.quarter}
+                        <c:facet name="header"> Number of sits</c:facet>
+                        <i class="fas fa-map-marker-alt"></i> #{buses.sits}
                     </h:column>
                 </h:dataTable>
             </h:form>

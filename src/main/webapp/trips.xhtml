@@ -9,17 +9,18 @@
 
     <ui:define name="content">
 
-        <h2 class="heading text-center text-uppercase">Agencies</h2>
+        <h2 class="heading text-center text-uppercase">Trips</h2>
+        
         <hr class="hr-dark" />
-
-        <!-- Modal: add Agency -->
-        <div class="modal fade" id="add" tabindex="-1" role="modal" aria-labelledby="Add Agency"
+        
+        <!-- Modal: add trip -->
+        <div class="modal fade" id="add" tabindex="-1" role="modal" aria-labelledby="Add trip"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <!--Header-->
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">New Agency</h4>
+                        <h4 class="modal-title" id="myModalLabel">New trip</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -28,65 +29,72 @@
                     <h:form class=" form-group">
                         <table class="col table ">
                             <tr>
-                                <td>Name :</td>
+                                <td>Departure :</td>
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-                                            <input class="form-control mr-sm-2 col-md-9" type="text" placeholder=" " aria-label="Name" value="#{agencyController.agency.name}"></input>
+                                            <input class="form-control mr-sm-2 col-md-9"  type="datetime-local"   value="#{tripsController.trips.departure}"></input> 
                                         </div>
                                     </form>
                                 </td>
                             </tr>
-
                             <tr>
-                                <td>Town :</td>
+                                <td>Arrival :</td>
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-
-                                            <select class="form-control mr-sm-2 col-md-12 mdb-select md-form">
-                                                <option value="#{agencyController.agency.town}" disabled="true" selected="selected">Choose your option</option>
-                                                <option value="yaounde">Yaounde</option>
-                                                <option value="douala">Douala</option>
-                                            </select>
+                                            <input class="form-control mr-sm-2 col-md-9" type="datetime-local" value="#{tripsController.trips.arrival}"></input> 
                                         </div>
                                     </form>
                                 </td>
                             </tr>
-
                             <tr>
-                                <td>Quarter :</td>
+                                <td>Departure agency :</td>
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-                                            <input class="form-control mr-sm-2 col-md-9" type="text" placeholder=" " aria-label="Quarter" value="#{agencyController.agency.quarter}"></input>
+                                            <!--this should display the agency of the connected agent-->
+                                            <p:inputText class="form-control mr-sm-2 col-md-9" value="#{authController.currentAgent.getAgency }" disabled="true" />
                                         </div>
                                     </form>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>Arrival agency :</td>
+                                <td>
+                                    <form class="form-inline ">
+                                        <div class="md-form my-0 ">
+                                            
+
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+
+                            
 
                         </table>	  
                     </h:form>
                     <!--Footer-->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
-                        <h:commandButton class="btn btn-primary" value = "Add Agency" 
-                                         action = "#{agencyController.create}" />
+                        <h:commandButton class="btn btn-primary" value = "Add trip" 
+                                         action = "#{tripsController.create}" />
 
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Modal: add Agency -->
+        <!-- Modal: add trip -->
 
-        <!-- Modal: Update Agency -->
-        <div class="modal fade" id="update" tabindex="-1" role="modal" aria-labelledby="Update Agency "
+        <!-- Modal: Update trip -->
+        <div class="modal fade" id="update" tabindex="-1" role="modal" aria-labelledby="Update trip "
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <!--Header-->
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Update Agency  #{agencyController.agency.id}</h4>
+                        <h4 class="modal-title" id="myModalLabel">Update trip  #{tripsController.trips.id}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -95,65 +103,72 @@
                     <h:form class=" form-group">
                         <table class="col table ">
                             <tr>
-                                <td>Name :</td>
+                                <td>Departure :</td>
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-                                            <input class="form-control mr-sm-2 col-md-9" type="text" placeholder=" " aria-label="Name" value="#{agencyController.agency.name}"></input>
+                                            <input class="form-control mr-sm-2 col-md-9"  type="datetime-local"   value="#{tripsController.trips.departure}"></input> 
                                         </div>
                                     </form>
                                 </td>
                             </tr>
-
                             <tr>
-                                <td>Town :</td>
+                                <td>Arrival :</td>
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-
-                                            <select class="form-control mr-sm-2 col-md-12 mdb-select md-form" onchange="#{agencyController.agency.town}">
-                                                <option value="" disabled="true" selected="selected">Choose your option</option>
-                                                <option value="yaounde">Yaounde</option>
-                                                <option value="douala">Douala</option>
-                                            </select>
+                                            <input class="form-control mr-sm-2 col-md-9" type="datetime-local" value="#{tripsController.trips.arrival}"></input> 
                                         </div>
                                     </form>
                                 </td>
                             </tr>
-
                             <tr>
-                                <td>Quarter :</td>
+                                <td>Departure agency :</td>
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-                                            <input class="form-control mr-sm-2 col-md-9" type="text" placeholder=" " aria-label="Quarter" value="#{agencyController.agency.quarter}"></input>
+                                            <!--this should display the agency of the connected agent-->
+                                            <p:inputText class="form-control mr-sm-2 col-md-9" value="#{authController.currentAgent.getAgency }" disabled="true" />
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Arrival agency :</td>
+                                <td>
+                                    <form class="form-inline ">
+                                        <div class="md-form my-0 ">
+                                            
+
                                         </div>
                                     </form>
                                 </td>
                             </tr>
 
-                        </table>	  
+                            
+
+                        </table>	 	  
                     </h:form>
                     <!--Footer-->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>                      
-                        <h:commandButton class="btn btn-primary" value = "Update Agency" 
-                                         action = "#{agencyController.edit(agencyController.agency.getId)}" />
+                        <h:commandButton class="btn btn-primary" value = "Update trip" 
+                                         action = "#{tripsController.edit(tripsController.trips.getId)}" />
 
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Modal: Update Agency -->
+        <!-- Modal: Update trip -->
 
-        <!-- Modal: Update Agency -->
-        <div class="modal shake " id="delete" tabindex="-1" role="dialog" aria-labelledby="Delete Agency"
+        <!-- Modal: Delete trip -->
+        <div class="modal shake " id="delete" tabindex="-1" role="dialog" aria-labelledby="Delete trip"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <!--Header-->
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Deleting Agency  #{agencyController.agency.name}</h4>
+                        <h4 class="modal-title" id="myModalLabel">Deleting trip  #{tripsController.trips.name}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -166,44 +181,56 @@
                     <div class="modal-footer">
 
                         <button class="btn btn-danger" data-dismiss="modal"
-                                onclick="#{agencyController.edit(agencyController.agency.getId)}" >
-                            Delete Agency
+                                onclick="#{tripsController.edit(tripsController.trips.getId)}" >
+                            Delete trip
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Modal: Update Agency -->
+        <!-- Modal: Delete trip -->
 
-        <!--/data table  for agents-->
+        <!--/data table  for trips-->
         <div class="row">
             <h:form class="col-md-10">
-                <h:dataTable value="#{agencyController.agencyList}" var="agency" border="0"
+                <h:dataTable value="#{tripsController.tripsList}" var="trips" border="0"
                              cellspacing="1" cellpadding="1" class="table table-hover " title="List of Agencies">
                     <h:column class="" >
-                        <c:facet name="header" class="">Name</c:facet>
-                            #{agency.name}
+                        <c:facet name="header" class="">Departure</c:facet>
+                            #{trips.departure}
                     </h:column>
-                    <h:column>
-                        <c:facet name="header">Town</c:facet>
-                            #{agency.town}
+                    <h:column class="" >
+                        <c:facet name="header" class="">Arrival</c:facet>
+                            #{trips.arrival}
                     </h:column>
-                    <h:column>
-                        <c:facet name="header"> Quarter</c:facet>
-                        <i class="fas fa-map-marker-alt"></i> #{agency.quarter}
+                    <h:column class="" >
+                        <c:facet name="header" class="">From - To</c:facet>
+                            #{trips.departure_agency} -> #{trips.arrival_agency}
+                    </h:column>
+                    <h:column class="" >
+                        <c:facet name="header" class="">Type</c:facet>
+                            #{trips.type}
+                    </h:column>
+                    <h:column class="" >
+                        <c:facet name="header" class="">Price</c:facet>
+                            #{trips.price}
+                    </h:column>
+                    <h:column class="" >
+                        <c:facet name="header" class="">Buses</c:facet>
+                            from BusTrip list (bus numbers)
                     </h:column>
                 </h:dataTable>
             </h:form>
-            <!--/data table  for agents-->
+            <!--/data table  for trips-->
             <!-- Button trigger modal-->
-            <div class="col-md-2">
-                <button type="button" class="col-md-10 btn-outline-success  btn" data-toggle="modal" data-target="#add">
+            <div class="col-sm-12 col-md-2">
+                <button type="button" class="col-md-10 col-sm-4  btn-outline-success  btn" data-toggle="modal" data-target="#add">
                     <i class="fa fa-plus "></i>
                 </button>
-                <button type="button" class="col-md-10 btn-outline-primary  btn" data-toggle="modal" data-target="#update">
+                <button type="button" class="col-md-10 col-sm-4 btn-outline-primary  btn" data-toggle="modal" data-target="#update">
                     <i class="fa fa-edit "></i>
                 </button>
-                <button type="button" class="col-md-10 btn-outline-danger  btn" data-toggle="modal" data-target="#delete">
+                <button type="button" class="col-md-10 col-sm-4  btn-outline-danger  btn" data-toggle="modal" data-target="#delete">
                     <i class="fa fa-trash "></i>
                 </button>
             </div>
