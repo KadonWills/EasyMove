@@ -1,0 +1,176 @@
+/*
+ * Base structure
+ */
+
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+
+body {
+    padding-top: 50px;
+    margin: 0;
+}
+
+
+/*
+ * Typography
+ */
+
+main {
+	
+	margin-left: 230px;
+	/* Should match width of #nav-sidebar. */
+	padding: 15px 15px 15px 15px; 
+	width: 80%
+}
+
+
+/*
+ * Topbar
+ */
+
+#nav-topbar {
+	padding-left: 0;
+	border-radius: 0;
+	flex-direction: row;
+}
+
+#nav-topbar .brand-container {
+	width: 225px;
+	/* Should match width of #nav-sidebar */
+	padding-left: 1rem;
+}
+
+#topbar-menu-container {
+	flex-direction: column;
+}
+
+.navbar-brand i {
+	margin-right: .5rem;
+}
+
+.navbar-toggler {
+	font-size: 1.5rem;
+	margin-top: .25rem;
+}
+
+.navbar-toggleable-sm .navbar-collapse,
+.navbar-toggleable-md .navbar-collapse {
+	width: auto;
+	padding-left: 10px;
+}
+
+
+/*
+ * Sidebar
+ */
+
+#nav-sidebar {
+	position: fixed;
+	width: 225px;
+	/* Should match width of main margin-left*/
+	top: 51px;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	padding: 1rem 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	/* Scrollable contents if viewport is shorter than content. */
+	border-right: 1px solid #eee;
+	box-shadow: 2px 0 5px 0 rgba(0, 0, 0, .16), 2px 0 10px 0 rgba(0, 0, 0, .12);
+	white-space: nowrap;
+	transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+}
+
+.sidebar-expand {
+	display: inline-flex;
+	margin: 0 0 1.5rem 1rem;
+}
+
+.sidebar-expand button {
+	font-size: 2.5rem;
+	line-height: 1.1;
+	color: #000;
+	background: 0 0;
+	border-width: 0;
+	border-color: rgba(255, 255, 255, .1);
+	cursor: pointer;
+	transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+}
+
+.sidebar-header {
+	padding: 0 1rem;
+}
+
+@media (max-width:767px) {
+	#nav-topbar .brand-container,
+	#nav-sidebar {
+		width: 50px;
+	}
+	#nav-topbar .brand-container.active,
+	#nav-sidebar.active {
+		width: 225px;
+		min-width: 50px;
+		max-width: 225px;
+	}
+	#nav-sidebar.active .sidebar-content {
+		display: block !important;
+	}
+	main {
+		margin-left: 50px;
+	}
+}
+
+
+/*
+ * Transforms
+ */
+
+.rotate-90cw {
+	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+}
+
+.rotate-180cw {
+	transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+}
+
+.rotate-90ccw {
+	transform: rotate(-90deg);
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+}
+
+.rotate-180ccw {
+	transform: rotate(-180deg);
+	-webkit-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+}
+
+.flip-y {
+	transform: perspective(100px) rotateY(180deg);
+	-webkit-transform: perspective(100px) rotateY(180deg);
+	-moz-transform: perspective(100px) rotateY(180deg);
+	-ms-transform: perspective(100px) rotateY(180deg);
+}
+
+.flip-x {
+	transform: perspective(100px) rotateX(180deg);
+	-webkit-transform: perspective(100px) rotateX(180deg);
+	-moz-transform: perspective(100px) rotateX(180deg);
+	-ms-transform: perspective(100px) rotateX(180deg);
+}
+

@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="en" >
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <ui:insert name="styles">
+                <link rel="stylesheet" href="./css/bootstrap.min.css"></link>
+                <link rel="stylesheet" href="./css/mdb.min.css"></link>
+                <link rel="stylesheet" href="./css/style.min.css"></link>
+                <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+                      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">F</link>
+            </ui:insert>
+                <title> <ui:insert name="title">EasyMove - Easy Travelling Experience</ui:insert> </title>
+            <ui:insert name="scripts">
+                <script src="./js/jquery-3.4.1.min.js"></script>
+                <script src="./js/popper.min.js"></script>
+                <script src="./js/bootstrap.min.js"></script>
+                <script src="./js/mdb.min.js"></script>
+            </ui:insert>
+        </h:head>
+
+        <h:body>
+
+            <ui:insert name="navbar">
+                <nav id="nav-topbar"
+                     class=" navbar navbar-toggleable-sm navbar-inverse fixed-top  navbar-dark primary-color lighten-1">
+                    <div class="brand-container">
+                        <a class="navbar-brand" href="#">
+                            <i class="fa fa-bus"></i>
+                            <span class="hidden-sm-down">EasyMove</span>
+                        </a>
+                    </div>
+
+                    <div id="topbar-menu-container">
+                        <button class="navbar-toggler hidden-md-up" type="button" data-toggle="collapse" data-target="#topbar-items"
+                                aria-controls="topbar-items" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa fa-bars"></i>
+                        </button>
+
+                        <div id="topbar-items" class="collapse navbar-collapse">
+                            <form class="form-inline ">
+                                <div class="md-form my-0 ">
+                                    <input class="form-control mr-sm-2 " type="text" placeholder="Search" aria-label="Search"></input>
+                                </div>
+                            </form>
+
+                            <ul class="navbar-nav ml-auto nav-flex-icons  ">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-flag "></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-555">
+                                        <a class="dropdown-item" href="#">French</a>
+                                        <a class="dropdown-item" href="#">English</a>
+                                        <a class="dropdown-item" href="#">Chinese</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item avatar dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                                             class="rounded-circle z-depth-0" alt="avatar image" width="25" height="25" />
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+                                         aria-labelledby="navbarDropdownMenuLink-55">
+                                        <a class="dropdown-item" href="#"> <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                            Edit
+                                            Profile</a>
+                                        <a class="dropdown-item" href="#"> <i class="fab fa-utensils    "></i> Settings</a>
+                                        <a class="dropdown-item" href="#"> <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                            Logout</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </ui:insert>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <ui:insert name="sidebar">
+                        <nav id="nav-sidebar" class="bg-faded">
+
+                            <div class="sidebar-expand hidden-md-up">
+                                <button type="button">
+                                    <i class="fa fa-angle-right"></i>
+                                </button>
+                            </div>
+                            <div class="sidebar-header hidden-sm-down">
+                                <h1>  </h1>
+                                <hr />
+                            </div>
+                            <div class="sidebar-content hidden-sm-down">
+
+
+                                <ul class="nav nav-pills flex-column">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="index.xhtml">Agencies</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="agents.xhtml">Agents</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="trips.xhtml">Trips</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="mails.xhtml">Mails</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="privileges.xhtml">Privileges</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="reservation.xhtml">Reservations</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="clients.xhtml">Clients</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="buses.xhtml">Buses</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="stats.xhtml">Statistics</a>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                        </nav>
+                    </ui:insert>
+
+                    <main>
+                        <ui:insert name="content">
+                            Template
+                        </ui:insert>
+                    </main>
+                </div>            
+            </div>
+            <ui:insert name="footer">
+
+            </ui:insert>
+
+
+            <ui:insert name="script">
+
+            </ui:insert>
+
+
+            <script src="./js/modules/wow.js">
+                //$(".button-collapse").sideNav();
+                //new WOW().init();
+            </script>
+            <script>
+                $('.sidebar-expand button').click(function () {
+                    $(this).toggleClass("flip-y");
+                    $('#nav-sidebar').toggleClass("active");
+                });
+                $('.mdb-select').materialSelect();
+            </script>
+        </h:body>
+    </f:view>
+</html>

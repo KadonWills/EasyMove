@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <link rel="stylesheet" href="./css/bootstrap.min.css"></link>
+        <link rel="stylesheet" href="./css/mdb.min.css"></link>
+        <link rel="stylesheet" href="./css/style.min.css"></link>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+              integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">F</link>
+        <title>EasyMove</title>
+        <script src="./js/jquery-3.4.1.min.js"></script>
+        <script src="./js/popper.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/mdb.min.js"></script>
+        <style>
+            body{
+                background-image: url(./img/bus.png);
+                background-repeat: no-repeat;
+                background-position: initial;
+                background-size: cover
+            }
+            .form-dark .font-small {
+                font-size: 0.8rem; }
+
+            .form-dark [type="radio"] + label,
+            .form-dark [type="checkbox"] + label {
+                font-size: 0.8rem; }
+
+            .form-dark [type="checkbox"] + label:before {
+                top: 2px;
+                width: 15px;
+                height: 15px; }
+
+            .form-dark .md-form label {
+                color: #fff; }
+
+            .form-dark input[type=email]:focus:not([readonly]) {
+                border-bottom: 1px solid #00C851;
+                -webkit-box-shadow: 0 1px 0 0 #00C851;
+                box-shadow: 0 1px 0 0 #00C851; }
+
+            .form-dark input[type=email]:focus:not([readonly]) + label {
+                color: #fff; }
+
+            .form-dark input[type=password]:focus:not([readonly]) {
+                border-bottom: 1px solid #00C851;
+                -webkit-box-shadow: 0 1px 0 0 #00C851;
+                box-shadow: 0 1px 0 0 #00C851; }
+
+            .form-dark input[type=password]:focus:not([readonly]) + label {
+                color: #fff; }
+
+            .form-dark input[type="checkbox"] + label:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 17px;
+                height: 17px;
+                z-index: 0;
+                border: 1.5px solid #fff;
+                border-radius: 1px;
+                margin-top: 3px;
+                -webkit-transition: 0.2s;
+                transition: 0.2s; }
+
+            .form-dark input[type="checkbox"]:checked + label:before {
+                top: -4px;
+                left: -3px;
+                width: 12px;
+                height: 22px;
+                border-style: solid;
+                border-width: 2px;
+                border-color: transparent #00c851 #00c851 transparent;
+                -webkit-transform: rotate(40deg);
+                -ms-transform: rotate(40deg);
+                transform: rotate(40deg);
+                -webkit-backface-visibility: hidden;
+                -webkit-transform-origin: 100% 100%;
+                -ms-transform-origin: 100% 100%;
+                transform-origin: 100% 100%; }
+
+            .form-dark .modal-header {
+                border-bottom: none;
+            }
+        </style>
+    </h:head>
+    <h:body class="row">
+
+        <!-- Modal -->
+        <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog form-dark" role="document">
+                <!--Content-->
+                <div class="modal-content card card-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table%20(7).jpg'); background-size: cover">
+                    <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+                        <!--Header-->
+                        <div class="modal-header text-center pb-4">
+                            <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>SIGN</strong> <a
+                                    class="green-text font-weight-bold"><strong> IN</strong></a></h3>
+                            <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <!--Body-->
+                        <div class="modal-body">
+                            <!--Body-->
+                            <div class="md-form mb-5">
+                                <input type="email" id="Form-email5" class="form-control validate white-text" />
+                                <label data-error="wrong" data-success="right" for="Form-email5">Your email</label>
+                            </div>
+
+                            <div class="md-form pb-3">
+                                <input type="password" id="Form-pass5" class="form-control validate white-text" />
+                                <label data-error="wrong" data-success="right" for="Form-pass5">Your password</label>
+
+                            </div>
+
+
+                            <div class=" mt-4">
+                                <input class="form-check-input" type="checkbox" id="checkbox624" />
+                                <label for="checkbox624" class="white-text form-check-label">Accept the<a href="#" class="green-text font-weight-bold">
+                                        Terms and Conditions</a></label>
+                            </div>
+
+
+                            <!--Grid row-->
+                            <div class="row d-flex align-items-center mb-4">
+                                <!--Grid column-->
+                                <div class="text-center mb-3 col-md-12">
+                                    <button type="button" class="btn btn-success btn-rounded btn-block z-depth-1">Sign up</button>
+                                </div>
+                                <!--Grid column-->
+
+                            </div>
+                            <!--Grid row-->
+
+                            <!--Grid row-->
+                            <div class="row">
+
+                                <!--Grid column-->
+                                <div class="col-md-12">
+                                    <p class="font-small white-text d-flex justify-content-end" data-toggle="modal" data-target="#elegantModalForm">Have an account? <a href="#" class="green-text ml-1 font-weight-bold">
+                                            Sign Up</a></p>
+                                </div>
+
+                                <!--Grid column-->
+
+                            </div>
+                            <!--Grid row-->
+
+                        </div>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+        <!-- Modal -->
+
+        <div class="row col-12" >
+            <div class="text-center col-md-6">
+                <a href="" class="btn btn-primary btn-rounded white-text" data-toggle="modal" data-target="#darkModalForm">Login</a>
+            </div>
+            <div class="text-center col-md-6">
+                <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#elegantModalForm">
+                    Sign in 
+                </a>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <!--Content-->
+                <div class="modal-content form-elegant">
+                    <!--Header-->
+                    <div class="modal-header text-center">
+                        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Sign in</strong></h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!--Body-->
+                    <div class="modal-body mx-4">
+                        <!--Body-->
+                        <div class="md-form mb-5">
+                            <input type="email" id="Form-email1" class="form-control validate" />
+                            <label data-error="wrong" data-success="right" for="Form-email1">Your email</label>
+                        </div>
+
+                        <div class="md-form pb-3">
+                            <input type="password" id="Form-pass1" class="form-control validate" />
+                            <label data-error="wrong" data-success="right" for="Form-pass1">Your password</label>
+                            <p class="font-small blue-text d-flex justify-content-end">Forgot <a href="#" class="blue-text ml-1">
+                                    Password?</a></p>
+                        </div>
+
+                        <div class="text-center mb-3">
+                            <button type="button" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Sign in</button>
+                        </div>
+                        <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign in
+                            with:</p>
+
+                        <div class="row my-3 d-flex justify-content-center">
+                            <!--Facebook-->
+                            <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-facebook-f text-center"></i></button>
+                            <!--Twitter-->
+                            <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-twitter"></i></button>
+                            <!--Google +-->
+                            <button type="button" class="btn btn-white btn-rounded z-depth-1a"><i class="fab fa-google-plus-g"></i></button>
+                        </div>
+                    </div>
+                    <!--Footer-->
+                    <div class="modal-footer mx-5 pt-3 mb-1">
+                        <p class="font-small grey-text d-flex justify-content-end">Not a member? <a href="#" class="blue-text ml-1">
+                                Sign Up</a></p>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+        <!-- Modal -->
+
+
+    </h:body>
+</html>
+
