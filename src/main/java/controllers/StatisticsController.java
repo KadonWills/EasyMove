@@ -6,6 +6,7 @@
 package controllers;
 
 import java.io.Serializable;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 /**
@@ -13,6 +14,7 @@ import javax.inject.Named;
  * @author nkengasong
  */
 @Named
+@ViewScoped
 public class StatisticsController implements Serializable  {
     
 }
