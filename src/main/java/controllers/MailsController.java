@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import sessions.MailsFacade;
@@ -20,6 +21,7 @@ import sessions.MailsFacade;
  * @author nkengasong
  */
 @Named
+@ViewScoped
 public class MailsController implements Serializable {
 
     private Mails mail;
@@ -64,8 +66,9 @@ public class MailsController implements Serializable {
     /**
      * Changes the state of the mail
      */
-    public void changeMailState(){
-        
+    public void changeMailState(String state){
+        mail.setMailState(state);
+        edit();
     }
     /**
      * Edits a mail using the current persistence unit
