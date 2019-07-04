@@ -18,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -128,4 +129,8 @@ public class Operations implements Serializable {
         return "entities.Operations[ idOperations=" + idOperations + " ]";
     }
     
+    @PrePersist
+    public void prePersist(){
+        setOperationDate(new Date());
+    }
 }

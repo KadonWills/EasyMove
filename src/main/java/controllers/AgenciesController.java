@@ -18,6 +18,7 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.primefaces.component.commandbutton.CommandButton;
+import org.primefaces.event.SelectEvent;
 import sessions.AgenciesFacade;
 import sessions.OperationsFacade;
 
@@ -29,15 +30,20 @@ import sessions.OperationsFacade;
 @ViewScoped
 public class AgenciesController implements Serializable {
 
-    @Inject private AgenciesFacade agenciesFacade;
-    @Inject private OperationsFacade operationsFacade;
+    @Inject
+    private AgenciesFacade agenciesFacade;
+    @Inject
+    private OperationsFacade operationsFacade;
     private Agencies agency;
     List<Agencies> agencies;
     private String operation;
     private String msg;
+    private Boolean disable;
 
     public AgenciesController() {
         agencies = new ArrayList<>();
+        agency = new Agencies();
+        disable = true;
     }
 
     @PostConstruct
@@ -45,7 +51,7 @@ public class AgenciesController implements Serializable {
         agencies.clear();
         agencies.addAll(agenciesFacade.findAll());
     }
-    
+
     public void saveOperation(String name, String target) {
         try {
             Operations operation = new Operations();
@@ -53,68 +59,56 @@ public class AgenciesController implements Serializable {
             operation.setOperationTarget(target);
             operation.setUsersId((Users) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("currentUser"));
             operationsFacade.create(operation);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    public void createAgency() {
+
+    public String createAgency() {
         try {
             agenciesFacade.create(agency);
             saveOperation("Create new agency", agency.getAgenciesName() + " with id = " + agency.getAgenciesId());
             msg = "Agency successfully created!";
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             msg = "Agency creation failed!";
+        } finally {
+            return FacesContext.getCurrentInstance().getExternalContext().getRequestPathInfo() + "?faces-redirect=true";
         }
     }
-    
-    public void editAgency() {
+
+    public String editAgency() {
         try {
             agenciesFacade.edit(agency);
             saveOperation("Edited an existing agency", agency.getAgenciesName() + " with id = " + agency.getAgenciesId());
             msg = "Agency successfully updated!";
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             msg = "Agency update failed!";
+        } finally {
+            return FacesContext.getCurrentInstance().getExternalContext().getRequestPathInfo() + "?faces-redirect=true";
         }
-    } 
-    
-    public void deleteAgency() {
+    }
+
+    public String deleteAgency() {
         try {
             agenciesFacade.remove(agency);
             saveOperation("Deleted an agency", agency.getAgenciesName() + " with id = " + agency.getAgenciesId());
             msg = "Agency successfully deleted!";
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             msg = "Agency deletion failed!";
+        } finally {
+            return FacesContext.getCurrentInstance().getExternalContext().getRequestPathInfo() + "?faces-redirect=true";
         }
     }
 
-    public void action(ActionEvent e){
-        CommandButton button = (CommandButton) e.getSource();
-        this.operation = button.getWidgetVar();
-        if (operation.equalsIgnoreCase("add")) this.agency = new Agencies();
-        this.msg = "";
-    } 
-    
-    public void persist() {
-        switch (this.operation) {
-            case "add":
-                createAgency();
-                break;
-            case "modify":
-                editAgency();
-                break;
-            case "delete":
-                deleteAgency();
-                break;
-        } 
+    public void rowSelectionListener(SelectEvent event) {
+        this.agency = (Agencies) event.getObject();     
+        setDisable(false);
     }
-    
-    
+
     /* Getters and Setters */
-    
     public AgenciesFacade getAgenciesService() {
         return agenciesFacade;
     }
@@ -170,5 +164,13 @@ public class AgenciesController implements Serializable {
     public void setMsg(String msg) {
         this.msg = msg;
     }
-    
+
+    public Boolean getDisable() {
+        return disable;
+    }
+
+    public void setDisable(Boolean disable) {
+        this.disable = disable;
+    }
+
 }
