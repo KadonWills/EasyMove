@@ -181,7 +181,7 @@
                                     <div class="md-form my-0 ">
                                         <!--list of agencies except that of the user's agency--> 
                                         <h:selectOneMenu class="form-control mr-sm-2 col-md-9 mdb-select md-form" id="arrival-agency" value="#{tripsController.arrivalAgency}">
-                                            <f:selectItem itemLabel="#{tripsController.trip.ageAgenciesId.agenciesName}" itemValue="#{tripsController.trip.ageAgenciesId.agenciesName}" />
+                                            <f:selectItem itemLabel="#{tripsController.trip.ageAgenciesId.agenciesName}" itemValue="#{tripsController.trip.ageAgenciesId.agenciesId}" />
                                             <f:selectItems var="agency"  
                                                            value="#{tripsController.arrivalAgencies}" itemLabel="#{agency.agenciesName}" 
                                                            itemValue="#{agency.agenciesId}" />

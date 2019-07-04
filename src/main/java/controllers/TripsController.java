@@ -54,7 +54,8 @@ public class TripsController implements Serializable {
         trips.addAll(tripsFacade.findAll());
         trip.setDeparture(new Date());
         trip.setArrival(new Date());
-        Users currentAgent = userFacade.find(2);  
+        Users currentAgent = userFacade.find(2); 
+        trip.setUsersId(currentAgent); 
         this.trip.setAgenciesId(currentAgent.getAgenciesId()); 
     }
 
@@ -72,8 +73,7 @@ public class TripsController implements Serializable {
 
     public String createTrip() {
         try {
-            System.out.println(arrivalAgency);
-            trip.setAgenciesId(agenciesFacade.find(Integer.parseInt(arrivalAgency)));
+            trip.setAgeAgenciesId(agenciesFacade.find(Integer.parseInt(arrivalAgency)));
             tripsFacade.create(trip);
             saveOperation("Create new agency", "From " + trip.getDepartAgency() + " to " + trip.getArrivalAgency() + " with id = " + trip.getTripsId());
             msg = "Trip successfully created!";
