@@ -11,7 +11,7 @@
                 xmlns:ps="http://xmlns.jcp.org/jsf/passthrough">
 
     <ui:define name="content">
-
+        <p:outputLabel value="#{authenticationcontroller.msg}" rendered="false" /> <!-- remove this after authentication -->
         <h2 class="heading text-center text-uppercase">Agencies</h2>
         <hr class="hr-dark" />
 
@@ -141,6 +141,7 @@
                     </div>
                     <!--Body and Footer-->
                     <h:form class=" form-group text-center my-3">
+                        <!--Body-->
                         <div class="form-group text-center my-3">
                             Are you sure you want to delete this agency?
                         </div>

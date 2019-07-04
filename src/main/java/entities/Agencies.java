@@ -142,7 +142,7 @@ public class Agencies implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Agencies[ agenciesId=" + agenciesId + " ]";
+        return "" + agenciesId + "";
     }
         
 }
