@@ -33,7 +33,7 @@
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-                                            <input class="form-control mr-sm-2 col-md-9" min="0" type="number" placeholder="#" aria-label="Name" value="#{busesController.buses.number}"></input> 
+                                            <input class="form-control mr-sm-2 col-md-9" min="0" type="number" placeholder="#" aria-label="Name" value="#{busesController.bus.busNumber}"></input> 
                                         </div>
                                     </form>
                                 </td>
@@ -44,7 +44,7 @@
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-                                            <input class="form-control mr-sm-2 col-md-9"  type="text" placeholder="" aria-label="Name" value="#{busesController.buses.colour}"></input>
+                                            <input class="form-control mr-sm-2 col-md-9"  type="text" placeholder="" aria-label="Name" value="#{busesController.bus.colour}"></input>
                                         </div>
                                     </form>
                                 </td>
@@ -55,7 +55,7 @@
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-                                            <input class="form-control mr-sm-2 col-md-9" min="35" max="70" type="number" placeholder=" " aria-label="Quarter" value="#{busesController.buses.quarter}"></input>
+                                            <input class="form-control mr-sm-2 col-md-9" min="35" max="70" type="number" placeholder=" " aria-label="numOfSits" value="#{busesController.bus.numOfSits}"></input>
                                         </div>
                                     </form>
                                 </td>
@@ -67,7 +67,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
                         <h:commandButton class="btn btn-primary" value = "Add Bus" 
-                                         action = "#{busesController.create}" />
+                                         action = "#{busesController.save()}" />
 
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                 <div class="modal-content">
                     <!--Header-->
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Update Bus  #{busesController.buses.id}</h4>
+                        <h4 class="modal-title" id="myModalLabel">Update Bus  #{busesController.bus.id}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -95,7 +95,7 @@
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-                                            <input class="form-control mr-sm-2 col-md-9" min="0" type="number" placeholder="#" aria-label="Name" value="#{busesController.buses.number}"></input> 
+                                            <input class="form-control mr-sm-2 col-md-9" min="0" type="number" placeholder="#" aria-label="Name" value="#{busesController.bus.busNumber}"></input> 
                                         </div>
                                     </form>
                                 </td>
@@ -106,7 +106,7 @@
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-                                            <input class="form-control mr-sm-2 col-md-9"  type="text" placeholder="" aria-label="Name" value="#{busesController.buses.colour}"></input>
+                                            <input class="form-control mr-sm-2 col-md-9"  type="text" placeholder="" aria-label="Name" value="#{busesController.bus.colour}"></input>
                                         </div>
                                     </form>
                                 </td>
@@ -117,7 +117,7 @@
                                 <td>
                                     <form class="form-inline ">
                                         <div class="md-form my-0 ">
-                                            <input class="form-control mr-sm-2 col-md-9" min="35" max="70" type="number" placeholder=" " aria-label="Quarter" value="#{busesController.buses.quarter}"></input>
+                                            <input class="form-control mr-sm-2 col-md-9" min="35" max="70" type="number" placeholder=" " aria-label="numOfSits" value="#{busesController.bus.numOfSits}"></input>
                                         </div>
                                     </form>
                                 </td>
@@ -129,7 +129,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>                      
                         <h:commandButton class="btn btn-primary" value = "Update Bus" 
-                                         action = "#{busesController.edit(busesController.buses.getId)}" />
+                                         action = "#{busesController.edit()}" />
 
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                 <div class="modal-content">
                     <!--Header-->
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Deleting Bus  #{busesController.buses.name}</h4>
+                        <h4 class="modal-title" id="myModalLabel">Deleting Bus  #{busesController.bus.busNumber}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -157,7 +157,7 @@
                     <div class="modal-footer">
 
                         <button class="btn btn-danger" data-dismiss="modal"
-                                onclick="#{busesController.edit(busesController.buses.getId)}" >
+                                onclick="#{busesController.delete()}" >
                             Delete Bus
                         </button>
                     </div>
@@ -169,19 +169,19 @@
         <!--/data table  for agents-->
         <div class="row">
             <h:form class="col-md-10">
-                <h:dataTable value="#{busesController.busesList}" var="buses" border="0"
+                <h:dataTable value="#{busesController.busList}" var="bus" border="0"
                              cellspacing="1" cellpadding="1" class="table table-hover " title="List of Agencies">
                     <h:column class="" >
                         <c:facet name="header" class="">Bus Number</c:facet>
-                            #{buses.number}
+                            #{bus.busNumber}
                     </h:column>
                     <h:column>
-                        <c:facet name="header">Color</c:facet>
-                            #{buses.color}
+                        <c:facet name="header">Colour</c:facet>
+                            #{bus.colour}
                     </h:column>
                     <h:column>
                         <c:facet name="header"> Number of sits</c:facet>
-                        <i class="fas fa-map-marker-alt"></i> #{buses.sits}
+                        <i class="fas fa-map-marker-alt"></i> #{bus.numOfSits}
                     </h:column>
                 </h:dataTable>
             </h:form>
