@@ -62,7 +62,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
                             <h:commandButton id="addButton" class="btn btn-primary" value="Add Agency" ps:data-dismiss="modal" action="#{agenciesController.createAgency()}">
-                                <f:ajax execute="@form" render="@form agenciesDataTable" />
+                                <f:ajax execute="@form" render="@form agenciesDataTable dataTableForm " />
                             </h:commandButton>
                         </div>	  
                     </h:form>
@@ -118,7 +118,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>                      
                             <h:commandButton id="updateButton" class="btn btn-primary" value="Update Agency" ps:data-dismiss="modal" action="#{agenciesController.editAgency()}">
-                                <f:ajax execute="@form" render="@form agenciesDataTable" />
+                                <f:ajax execute="@form" render="@form agenciesDataTable dataTableForm " />
                             </h:commandButton>
                         </div>	  
                     </h:form>
@@ -147,7 +147,7 @@
                         <!--Footer-->
                         <div class="modal-footer">
                             <h:commandButton id="deleteButton" class="btn btn-danger" value="Yes, Delete Agency" ps:data-dismiss="modal" action="#{agenciesController.deleteAgency()}">
-                                <f:ajax execute="@form" render="@form agenciesDataTable" />
+                                <f:ajax execute="@form" render="@form agenciesDataTable dataTableForm" />
                             </h:commandButton> 
                         </div>
                     </h:form>

@@ -12,7 +12,7 @@
 
     <ui:define name="content">
 
-        <h2 class="heading text-center text-uppercase">Agencts</h2>
+        <h2 class="heading text-center text-uppercase">Agents</h2>
         <hr class="hr-dark" />
 
         <!-- Modal: add Agency -->
@@ -34,7 +34,7 @@
                                 <td>Name :</td>
                                 <td>
                                     <div class="md-form my-0 ">
-                                        <input class="form-control mr-sm-2 col-md-9" type="text" required="true" placeholder=" " aria-label="Name" id="name" jsf:value="#{agenctsController.agency.agenctsName}"></input>
+                                        <input class="form-control mr-sm-2 col-md-9" type="text" required="true" placeholder=" " aria-label="Name" id="name" jsf:value="#{agentsController.agency.agentsName}"></input>
                                     </div>
                                 </td>
                             </tr>
@@ -42,7 +42,7 @@
                                 <td>Town :</td>
                                 <td>
                                     <div class="md-form my-0">
-                                        <h:selectOneMenu class="form-control mr-sm-2 col-md-9 mdb-select md-form" id="town" value="#{agenctsController.agency.town}" required="true">
+                                        <h:selectOneMenu class="form-control mr-sm-2 col-md-9 mdb-select md-form" id="town" value="#{agentsController.agency.town}" required="true">
                                             <f:selectItem itemLabel="Yaounde" itemValue="Yaounde" />
                                             <f:selectItem itemLabel="Douala" itemValue="Douala" />
                                         </h:selectOneMenu>
@@ -53,7 +53,7 @@
                                 <td>Quarter :</td>
                                 <td>
                                     <div class="md-form my-0 ">
-                                        <input class="form-control mr-sm-2 col-md-9" type="text" placeholder="" required="true" aria-label="Quarter" jsf:value="#{agenctsController.agency.quarter}"></input>
+                                        <input class="form-control mr-sm-2 col-md-9" type="text" placeholder="" required="true" aria-label="Quarter" jsf:value="#{agentsController.agency.quarter}"></input>
                                     </div>
                                 </td>
                             </tr>
@@ -61,8 +61,8 @@
                         <!--Footer-->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
-                            <h:commandButton id="addButton" class="btn btn-primary" value="Add Agency" ps:data-dismiss="modal" action="#{agenctsController.createAgency()}">
-                                <f:ajax execute="@form" render="@form agenctsDataTable" />
+                            <h:commandButton id="addButton" class="btn btn-primary" value="Add Agency" ps:data-dismiss="modal" action="#{agentsController.createAgency()}">
+                                <f:ajax execute="@form" render="@form agentsDataTable" />
                             </h:commandButton>
                         </div>	  
                     </h:form>
@@ -90,7 +90,7 @@
                                 <td>Name :</td>
                                 <td>
                                     <div class="md-form my-0">
-                                        <input class="form-control mr-sm-2 col-md-9" type="text" placeholder="" aria-label="Name" jsf:value="#{agenctsController.agency.agenctsName}"></input>
+                                        <input class="form-control mr-sm-2 col-md-9" type="text" placeholder="" aria-label="Name" jsf:value="#{agentsController.agency.agentsName}"></input>
                                     </div>
                                 </td>
                             </tr>
@@ -98,7 +98,7 @@
                                 <td>Town :</td>
                                 <td>
                                     <div class="md-form my-0">
-                                        <h:selectOneMenu class="form-control mr-sm-2 col-md-9 mdb-select md-form" id="town" value="#{agenctsController.agency.town}">
+                                        <h:selectOneMenu class="form-control mr-sm-2 col-md-9 mdb-select md-form" id="town" value="#{agentsController.agency.town}">
                                             <f:selectItem itemLabel="Yaounde" itemValue="Yaounde"  />
                                             <f:selectItem itemLabel="Douala" itemValue="Douala" />
                                         </h:selectOneMenu>
@@ -109,7 +109,7 @@
                                 <td>Quarter :</td>
                                 <td>
                                     <div class="md-form my-0">
-                                        <input class="form-control mr-sm-2 col-md-9" type="text" placeholder="" aria-label="Quarter" jsf:value="#{agenctsController.agency.quarter}"></input>
+                                        <input class="form-control mr-sm-2 col-md-9" type="text" placeholder="" aria-label="Quarter" jsf:value="#{agentsController.agency.quarter}"></input>
                                     </div>
                                 </td>
                             </tr>
@@ -117,8 +117,8 @@
                         <!--Footer-->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>                      
-                            <h:commandButton id="updateButton" class="btn btn-primary" value="Update Agency" ps:data-dismiss="modal" action="#{agenctsController.editAgency()}">
-                                <f:ajax execute="@form" render="@form agenctsDataTable" />
+                            <h:commandButton id="updateButton" class="btn btn-primary" value="Update Agency" ps:data-dismiss="modal" action="#{agentsController.editAgency()}">
+                                <f:ajax execute="@form" render="@form agentsDataTable" />
                             </h:commandButton>
                         </div>	  
                     </h:form>
@@ -134,7 +134,7 @@
                 <div class="modal-content">
                     <!--Header-->
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Deleting Agency #{agenctsController.agency.agenctsName}</h4>
+                        <h4 class="modal-title" id="myModalLabel">Deleting Agency #{agentsController.agency.agentsName}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -146,8 +146,8 @@
                         </div>
                         <!--Footer-->
                         <div class="modal-footer">
-                            <h:commandButton id="deleteButton" class="btn btn-danger" value="Yes, Delete Agency" ps:data-dismiss="modal" action="#{agenctsController.deleteAgency()}">
-                                <f:ajax execute="@form" render="@form agenctsDataTable" />
+                            <h:commandButton id="deleteButton" class="btn btn-danger" value="Yes, Delete Agency" ps:data-dismiss="modal" action="#{agentsController.deleteAgency()}">
+                                <f:ajax execute="@form" render="@form agentsDataTable" />
                             </h:commandButton> 
                         </div>
                     </h:form>
@@ -156,30 +156,30 @@
         </div>
         <!-- Modal: Delete Agency -->
 
-        <!--/data table  for agencts-->
+        <!--/data table  for agents-->
         <div class="row">
-            <h:form class="col-md-10" id="dataTableForm">
-                <p:dataTable value="#{agenctsController.agencts}" var="agency" 
+            <h:form class="col-md-10" id="agenciesDataTable">
+                <p:dataTable value="#{agentsController.agents}" var="agency" 
                              class="table table-hover"
-                             id="agenctsDataTable" 
-                             rowKey="#{agency.agenctsId}"
-                             selection="#{agenctsController.agency}" selectionMode="single">
-                    <p:ajax event="rowSelect" listener="#{agenctsController.rowSelectionListener}" update=":edit-button, :delete-button :updateAgencyForm" />
-                    <p:column headerText="Name">#{agency.agenctsName}</p:column> 
+                             id="agentsDataTable" 
+                             rowKey="#{agency.agentsId}"
+                             selection="#{agentsController}" selectionMode="single">
+                    <p:ajax event="rowSelect" listener="#{agentsController.rowSelectionListener}" update=":edit-button, :delete-button :updateAgencyForm" />
+                    <p:column headerText="Name">#{agency}</p:column> 
                     <p:column headerText="Town">#{agency.town}</p:column>
                     <p:column headerText="Quarter"><i class="fas fa-map-marker-alt"></i> #{agency.quarter}</p:column> 
                 </p:dataTable>
             </h:form>
-            <!--/data table  for agencts-->
+            <!--/data table  for agents-->
             <!-- Button to trigger modal-->
             <div class="col-md-2">
                 <button type="button" class="col-md-10 btn-outline-success btn" data-toggle="modal" data-target="#add">
                     <i class="fa fa-plus "></i>
                 </button>
-                <button type="button" jsf:id="edit-button" class="col-md-10 btn-outline-primary btn" jsf:disabled="#{agenctsController.disable}" data-toggle="modal" data-target="#update">
+                <button type="button" jsf:id="edit-button" class="col-md-10 btn-outline-primary btn" jsf:disabled="#{agentsController.disable}" data-toggle="modal" data-target="#update">
                     <i class="fa fa-edit "></i>
                 </button>
-                <button type="button" jsf:id="delete-button" class="col-md-10 btn-outline-danger btn" jsf:disabled="#{agenctsController.disable}" data-toggle="modal" data-target="#delete">
+                <button type="button" jsf:id="delete-button" class="col-md-10 btn-outline-danger btn" jsf:disabled="#{agentsController.disable}" data-toggle="modal" data-target="#delete">
                     <i class="fa fa-trash "></i>
                 </button>   
             </div>
