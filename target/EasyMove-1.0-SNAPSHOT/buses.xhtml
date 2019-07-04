@@ -169,7 +169,7 @@
         <!--/data table  for agents-->
         <div class="row">
             <h:form class="col-md-10">
-                <h:dataTable value="#{busesController.busList}" var="bus" border="0"
+                <h:dataTable value="#{busesController.busOperation.findAll()}" var="bus" border="0"
                              cellspacing="1" cellpadding="1" class="table table-hover " title="List of Agencies">
                     <h:column class="" >
                         <c:facet name="header" class="">Bus Number</c:facet>

@@ -3,10 +3,353 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <meta charset="utf-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+        <meta http-equiv="x-ua-compatible" content="ie=edge"></meta>
+        <title>EasyMove - The best travelling experience</title>
+        <!-- Font Awesome 5(all) online/offline-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"></link>
+        <link rel="stylesheet" href="./css/font-awesome 5.css"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="./css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <!-- EasyMove -->
+        <link href="./css/mdb.min.css" rel="stylesheet"></link>
+        <style>
+            body{ 
+                margin-top:0px; 
+            }
+            .stepwizard-step p {
+                margin-top: 10px;
+            }
+
+            .stepwizard-row {
+                display: table-row;
+            }
+
+            .stepwizard {
+                display: table;
+                width: 100%;
+                position: relative;
+            }
+
+            .stepwizard-step button[disabled] {
+                opacity: 1 !important;
+                filter: alpha(opacity=100) !important;
+            }
+
+            .stepwizard-row:before {
+                top: 14px;
+                bottom: 0;
+                position: absolute;
+                content: " ";
+                width: 100%;
+                height: 1px;
+                background-color: #ccc;
+                z-index:  0;
+
+            }
+
+            .stepwizard-step {
+                display: table-cell;
+                text-align: center;
+                position: relative;
+            }
+            .btn
+            {
+                border-radius: 0px;
+            }
+            .btn-circle {
+                width: 56px;
+                height: 56px;
+                text-align: center;
+                padding: 12px 0;
+                font-size: 20px;
+                line-height: 1.428571429;
+                border-radius: 35px;
+                margin-top: -14px;
+                border: solid 3px #ccc !important;
+                opacity:1 !important;
+                -webkit-box-shadow:inset 0px 0px 0px 3px #fff !important; 
+                -moz-box-shadow:inset 0px 0px 0px 3px #fff !important;
+                -o-box-shadow:inset 0px 0px 0px 3px #fff !important;
+                -ms-box-shadow:inset 0px 0px 0px 3px #fff !important; 
+                box-shadow:inset 0px 0px 0px 3px #fff !important;
+                background-color:#428bca;
+            }
+
+        </style>
     </h:head>
-    <h:body>
-        Hello from Facelets
+    <h:body class="">
+        <nav id="nav-topbar"
+             class=" navbar navbar-inverse fixed-top  navbar-dark primary-color lighten-1">
+            <div class="brand-container">
+                <a class="navbar-brand white-text" href="#">
+                    <i class="fa fa-bus"></i>
+                    <span class="hidden-sm-down white-text">EasyMove</span> - Reservation
+                </a>
+            </div>
+
+            <div id="topbar-menu-container">
+                <button class="navbar-toggler hidden-md-up" type="button" data-toggle="collapse" data-target="#topbar-items"
+                        aria-controls="topbar-items" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+
+            </div>
+        </nav>
+        
+        
+        <div class="container">
+            <div class="stepwizard">
+                <div class="stepwizard-row setup-panel">
+                    <div class="stepwizard-step">
+                        <a href="#VerifyEmail-step" type="button" class="btn btn-success btn-circle" disabled="disabled">
+                            <span class="fa fa-envelope"></span>
+                        </a>
+                        <p>Verify Email</p>
+                    </div>
+                    <div class="stepwizard-step">
+                        <a href="#ProfileSetup-step" type="button" class="btn btn-primary btn-circle" id="ProfileSetup-step-2">
+                            <span class="fa fa-user"></span>
+                        </a>
+                        <p>Your Info</p>
+                    </div>
+                    <div class="stepwizard-step circle">
+                        <a href="#Security-Setup-step" type="button"  class="btn btn-danger btn-circle "  disabled="disabled" id="Security-Setup-step-3">
+                            <span class="fa fa-tools"></span>
+                        </a>
+                        <p>Final Setup</p>
+                    </div>
+                </div>
+            </div>
+            <form role="form">
+                <div class="row setup-content" id="VerifyEmail-step">
+                    <div class="col-xs-12">
+                        <div class="col-md-12">
+                            <br/>
+                            <div class="form-horizontal">
+                                <form  role="form">
+                                    <fieldset>
+                                        <legend>Enter Your  Information</legend>
+                                        <br/>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-holder-name">Your Email</label>
+                                            <div class="col-sm-9">
+                                                <input  maxlength="100" type="email" required="required" class="form-control" placeholder="Enter Email"  />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-number">Password</label>
+                                            <div class="col-sm-9">
+                                                <input  maxlength="100" type="password" required="required" class="form-control" placeholder="Enter Password"  />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-number">Re-enter Password</label>
+                                            <div class="col-sm-9">
+                                                <input  maxlength="100" type="password" required="required" class="form-control" placeholder="Enter Password"  />
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Setup Profile</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row setup-content" id="ProfileSetup-step">
+                    <div class="col-xs-12">
+                        <div class="col-md-12">
+                            <br/>
+                            <div class="form-horizontal">
+                                <form  role="form">
+                                    <fieldset>
+
+                                        <legend>Complete your Information</legend>
+                                        <br/>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-holder-name">Your Email</label>
+                                            <div class="col-sm-9">
+                                                <input  maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Email"  />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-number">Name</label>
+                                            <div class="col-sm-9">
+                                                <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Name" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-number">Primary Phone Number</label>
+                                            <div class="col-sm-9">
+                                                <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Primary Phone Number" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-number">Address</label>
+                                            <div class="col-sm-9">
+                                                <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Address" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-6 control-label" for="card-number">City</label>
+                                                <div class="col-sm-6" style="padding-left:8px">
+                                                    <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter City" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row setup-content" id="Security-Setup-step">
+                    <div class="col-xs-12">
+                        <div class="col-md-12">
+                            <b>Finally,  <stong>Mr/Mrs</stong></b>
+                            <p>We are almost done, please enter the following information for your trip.</p>
+
+                            <div class="form-horizontal">
+                                <form  role="form">
+                                    <fieldset>
+                                        <br/>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-holder-name">Travelling from :</label>
+                                            <div class="col-sm-9">
+                                                <select required="required" class="form-control col-sm-6" style="height: 35px">
+                                                    <option value="0">Select Region</option>
+                                                    <option value="pakistan">Yaounde</option>
+                                                    <option value="usa">Douala</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <br/>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-holder-name">Travelling to :</label>
+                                            <div class="col-sm-9">
+                                                <select required="required" class="form-control col-sm-6" style="height: 35px">
+                                                    <option value="0">Select Region</option>
+                                                    <option value="pakistan">Yaounde</option>
+                                                    <option value="usa">Douala</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <br/>
+                                        <hr/>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-holder-name">Travelling Class:</label>
+                                            <div class="col-sm-9">
+                                                <select required="required" class="form-control col-sm-6" style="height: 35px">
+                                                    <option value="0">Select Class</option>
+                                                    <option value="basic">Basic - 2500</option>
+                                                    <option value="basic">Classic - 3000</option>
+                                                    <option value="basic">Good - 4000</option>
+                                                    <option value="vip">VIP - 5000</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-holder-name">Payement Method:</label>
+                                            <div class="col-sm-9">
+                                                <select required="required" class="form-control col-sm-6" style="height: 35px">
+                                                    <option value="0">Select Class</option>
+                                                    <option value="om">Orange Money</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-number">Phone number (+237):</label>
+                                            <div class="col-sm-6">
+                                                <input maxlength="100" type="tel" usemap="tel" required="required" class="form-control " placeholder="Enter Phone number" />
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <hr />
+                                        <br/>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-number">Recover cellphone Number:</label>
+                                            <div class="col-sm-9">
+                                                <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Cellphone Number" />
+                                                <p>Optional: We may send you a recovery code on this phone number if you are ever unable to lgoin to your account.</p>
+                                            </div>
+
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <!--h3> You are all set!</h3>
+                            <p>Welcome to MetroPago. We are glade to have you here.</p-->
+                            <button class="btn btn-primary btn-lg pull-right nextBtn" type="submit" onclick="
+                                    swal('Your Reservation has been saved !', {
+                                        title: 'Trip Reserved',
+                                        icon: 'success',
+                                        button: 'Ok'
+                                    }).then((value) => {
+                                        window.location.assign('client.xhtml');
+                                    });">Complete Reservation</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                var navListItems = $('div.setup-panel div a'),
+                        allWells = $('.setup-content'),
+                        allNextBtn = $('.nextBtn');
+                allWells.hide();
+                navListItems.click(function (e) {
+                    e.preventDefault();
+                    var $target = $($(this).attr('href')),
+                            $item = $(this);
+                            $target.show();
+                    if (!$item.hasClass('disabled')) {
+                        //navListItems.removeClass('btn-primary').addClass('btn-default');
+                        if ($item.attr('id') !== $(navListItems[1]).attr('id'))
+                            ;
+                        {
+                            $(navListItems[1]).removeClass('btn-primary').addClass('btn-success');
+                        }
+                        //$('#item3').addClass('btn-success');
+                        $item.addClass('btn-primary');
+                        allWells.hide();
+                        $target.show();
+                        $target.find('input:eq(0)').focus();
+                    }
+                });
+                allNextBtn.click(function () {
+                    var curStep = $(this).closest(".setup-content"),
+                            curStepBtn = curStep.attr("id"),
+                            nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                            curInputs = curStep.find("input[type='text'],input[type='url'], input[type='password'], input[type='email']"),
+                            isValid = true;
+                    $(".form-group").removeClass("has-error");
+                    for (var i = 0; i &lt; curInputs.length; i++) {
+                        if (!curInputs[i].validity.valid) {
+                            isValid = false;
+                            $(curInputs[i]).closest(".form-group").addClass("has-error");
+                        }
+                    }
+
+                    if (isValid)
+                        nextStepWizard.removeAttr('disabled').trigger('click');
+                });
+                $('div.setup-panel div a.btn-primary').trigger('click');
+            });
+        </script>
     </h:body>
 </html>
-
