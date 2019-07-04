@@ -31,7 +31,7 @@ public class TripsController implements Serializable {
     private TripsFacade tripsFacade;
     @Inject
     private OperationsFacade operationsFacade;
-   @Inject
+    @Inject
     private UsersFacade userFacade;
     @Inject
     private AgenciesFacade agenciesFacade;
@@ -45,7 +45,7 @@ public class TripsController implements Serializable {
     public TripsController() {
         trips = new ArrayList<>();
         trip = new Trips();
-        disable = true; 
+        disable = true;
     }
 
     @PostConstruct
@@ -54,9 +54,9 @@ public class TripsController implements Serializable {
         trips.addAll(tripsFacade.findAll());
         trip.setDeparture(new Date());
         trip.setArrival(new Date());
-        Users currentAgent = userFacade.find(2); 
-        trip.setUsersId(currentAgent); 
-        this.trip.setAgenciesId(currentAgent.getAgenciesId()); 
+        Users currentAgent = userFacade.find(2);
+        trip.setUsersId(currentAgent);
+        this.trip.setAgenciesId(currentAgent.getAgenciesId());
     }
 
     public void saveOperation(String name, String target) {
@@ -116,19 +116,18 @@ public class TripsController implements Serializable {
         this.trip = (Trips) event.getObject();
         setDisable(false);
     }
-    
+
     public List<Agencies> getArrivalAgencies() {
         // set departure agency to agency of current user todo: get user using authenticationController
         // the current user should not be the admin because he/she should be performing day to day task
-        Users currentAgent = userFacade.find(2);  
+        Users currentAgent = userFacade.find(2);
         Agencies agencyOfAgent = currentAgent.getAgenciesId();
-        this.trip.setAgenciesId(agencyOfAgent); 
+        this.trip.setAgenciesId(agencyOfAgent);
         List<Agencies> arrivals = agenciesFacade.findArrivalAgencies(agencyOfAgent.getAgenciesId());
         return arrivals;
     }
-    
-    /* Getters and Setters */
 
+    /* Getters and Setters */
     public TripsFacade getTripsFacade() {
         return tripsFacade;
     }
@@ -209,5 +208,4 @@ public class TripsController implements Serializable {
         this.arrivalAgency = arrivalAgency;
     }
 
-    
 }
