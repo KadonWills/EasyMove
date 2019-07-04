@@ -6,6 +6,7 @@ import entities.Trips;
 import entities.Users;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -51,6 +52,10 @@ public class TripsController implements Serializable {
     public void init() {
         trips.clear();
         trips.addAll(tripsFacade.findAll());
+        trip.setDeparture(new Date());
+        trip.setArrival(new Date());
+        Users currentAgent = userFacade.find(2);  
+        this.trip.setAgenciesId(currentAgent.getAgenciesId()); 
     }
 
     public void saveOperation(String name, String target) {
@@ -67,6 +72,8 @@ public class TripsController implements Serializable {
 
     public String createTrip() {
         try {
+            System.out.println(arrivalAgency);
+            trip.setAgenciesId(agenciesFacade.find(Integer.parseInt(arrivalAgency)));
             tripsFacade.create(trip);
             saveOperation("Create new agency", "From " + trip.getDepartAgency() + " to " + trip.getArrivalAgency() + " with id = " + trip.getTripsId());
             msg = "Trip successfully created!";
@@ -204,105 +211,3 @@ public class TripsController implements Serializable {
 
     
 }
-
-/*
-
-<!-- Modal: add trip -->
-        <div class="modal fade" id="add" tabindex="-1" role="modal" aria-labelledby="Add trip"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <!--Header-->
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Add new trip</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <!--Body-->
-                    <h:form class=" form-group">
-                        <table class="col table ">
-                            <tr>
-                                <td>Departure :</td>
-                                <td>
-                                    <form class="form-inline ">
-                                        <div class="md-form my-0 ">
-                                            <input class="form-control mr-sm-2 col-md-9" type="datetime-local" value="#{tripsController.trips.departure}"></input> 
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Arrival :</td>
-                                <td>
-                                    <div class="md-form my-0 ">
-                                        <input class="form-control mr-sm-2 col-md-9" type="datetime-local" value="#{tripsController.trips.arrival}"></input> 
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Departure agency :</td>
-                                <td>
-                                    <form class="form-inline ">
-                                        <div class="md-form my-0 ">
-                                            <!--this should display the agency of the connected agent-->
-                                            <p:inputText class="form-control mr-sm-2 col-md-9" value="#{authenticationcontroller.currentAgent.agenciesId.agenciesName}" disabled="true" />
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Arrival agency :</td>
-                                <td>
-                                    <div class="md-form my-0 ">
-                                        <!-- list of agencies except that of the user's agency -->
-                                        <h:selectOneMenu class="form-control mr-sm-2 col-md-9 mdb-select md-form" id="arrival-agency" value="#{tripsController.trip.ageAgenciesId}">
-                                            <f:selectItems var="agency" value="#{tripsController.arrivalAgencies}" itemLabel="#{agency.agenciesName}" itemValue="#{agency}" />
-                                        </h:selectOneMenu>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>	  
-                        <!--Footer-->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
-                            <h:commandButton id="addButton" class="btn btn-primary" value="Add Trip" ps:data-dismiss="modal" action="#{tripsController.createTrip()}">
-                                <f:ajax execute="@form" render="@form tripsDataTable" />
-                            </h:commandButton>
-                        </div>	  
-                    </h:form>
-                </div>
-            </div>
-        </div>
-        <!-- Modal: add trip -->
-
-
-<tr>
-                                <td>Arrival :</td>
-                                <td>
-                                    <div class="md-form my-0 ">
-                                        <input class="form-control mr-sm-2 col-md-9" type="datetime-local" value="#{tripsController.trips.arrival}"></input> 
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Departure agency :</td>
-                                <td>
-                                    <div class="md-form my-0 ">
-                                        this should display the agency of the connected agent
-                                        <p:inputText class="form-control mr-sm-2 col-md-9" value="#{authenticationcontroller.currentAgent.agenciesId.agenciesName }" disabled="true" />
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Arrival agency :</td>
-                                <td>
-                                    <div class="md-form my-0 ">
-                                         list of agencies except that of the user's agency 
-                                        <h:selectOneMenu class="form-control mr-sm-2 col-md-9 mdb-select md-form" id="arrival-agency" value="#{tripsController.trip.ageAgenciesId}">
-                                            <f:selectItems var="agency" value="#{tripsController.arrivalAgencies}" itemLabel="#{agency.agenciesName}" itemValue="#{agency}" />
-                                        </h:selectOneMenu>
-                                    </div>
-                                </td>
-                            </tr>
-*/
