@@ -1,20 +1,23 @@
 package controllers;
 
+import entities.Agencies;
 import entities.Operations;
 import entities.Trips;
 import entities.Users;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import org.primefaces.component.commandbutton.CommandButton;
+import org.primefaces.event.SelectEvent;
+import sessions.AgenciesFacade;
 import sessions.OperationsFacade;
 import sessions.TripsFacade;
+import sessions.UsersFacade;
 
 /**
  *
@@ -22,25 +25,40 @@ import sessions.TripsFacade;
  */
 @Named
 @ViewScoped
-public class TripsController implements Serializable  {
-    
-    @Inject private TripsFacade tripsFacade;
-    @Inject private OperationsFacade operationsFacade;
+public class TripsController implements Serializable {
+
+    @Inject
+    private TripsFacade tripsFacade;
+    @Inject
+    private OperationsFacade operationsFacade;
+   @Inject
+    private UsersFacade userFacade;
+    @Inject
+    private AgenciesFacade agenciesFacade;
     private Trips trip;
     List<Trips> trips;
     private String operation;
     private String msg;
+    private String arrivalAgency;
+    private Boolean disable;
 
     public TripsController() {
         trips = new ArrayList<>();
+        trip = new Trips();
+        disable = true; 
     }
 
     @PostConstruct
     public void init() {
         trips.clear();
         trips.addAll(tripsFacade.findAll());
+        trip.setDeparture(new Date());
+        trip.setArrival(new Date());
+        Users currentAgent = userFacade.find(2); 
+        trip.setUsersId(currentAgent); 
+        this.trip.setAgenciesId(currentAgent.getAgenciesId()); 
     }
-    
+
     public void saveOperation(String name, String target) {
         try {
             Operations operation = new Operations();
@@ -48,65 +66,66 @@ public class TripsController implements Serializable  {
             operation.setOperationTarget(target);
             operation.setUsersId((Users) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("currentUser"));
             operationsFacade.create(operation);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    public void createTrip() {
+
+    public String createTrip() {
         try {
+            trip.setAgeAgenciesId(agenciesFacade.find(Integer.parseInt(arrivalAgency)));
             tripsFacade.create(trip);
             saveOperation("Create new agency", "From " + trip.getDepartAgency() + " to " + trip.getArrivalAgency() + " with id = " + trip.getTripsId());
             msg = "Trip successfully created!";
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             msg = "Trip creation failed!";
+        } finally {
+            return FacesContext.getCurrentInstance().getExternalContext().getRequestPathInfo() + "?faces-redirect=true";
         }
     }
-    
-    public void editTrip() {
+
+    public String editTrip() {
         try {
+            trip.setAgenciesId(agenciesFacade.find(Integer.parseInt(arrivalAgency)));
             tripsFacade.edit(trip);
             saveOperation("Edited an existing agency", "From " + trip.getDepartAgency() + " to " + trip.getArrivalAgency() + " with id = " + trip.getTripsId());
             msg = "Trip successfully updated!";
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             msg = "Trip update failed!";
+        } finally {
+            return FacesContext.getCurrentInstance().getExternalContext().getRequestPathInfo() + "?faces-redirect=true";
         }
-    } 
-    
-    public void deleteTrip() {
+    }
+
+    public String deleteTrip() {
         try {
             tripsFacade.remove(trip);
             saveOperation("Deleted a trip", "From " + trip.getDepartAgency() + " to " + trip.getArrivalAgency() + " with id = " + trip.getTripsId());
             msg = "Trip successfully deleted!";
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             msg = "Trip deletion failed!";
+        } finally {
+            return FacesContext.getCurrentInstance().getExternalContext().getRequestPathInfo() + "?faces-redirect=true";
         }
     }
 
-    public void action(ActionEvent e){
-        CommandButton button = (CommandButton) e.getSource();
-        this.operation = button.getWidgetVar();
-        if (operation.equalsIgnoreCase("add")) this.trip = new Trips();
-        this.msg = "";
-    } 
-    
-    public void persist() {
-        switch (this.operation) {
-            case "add":
-                createTrip();
-                break;
-            case "modify":
-                editTrip();
-                break;
-            case "delete":
-                deleteTrip();
-                break;
-        } 
+    public void rowSelectionListener(SelectEvent event) {
+        this.trip = (Trips) event.getObject();
+        setDisable(false);
     }
     
+    public List<Agencies> getArrivalAgencies() {
+        // set departure agency to agency of current user todo: get user using authenticationController
+        // the current user should not be the admin because he/she should be performing day to day task
+        Users currentAgent = userFacade.find(2);  
+        Agencies agencyOfAgent = currentAgent.getAgenciesId();
+        this.trip.setAgenciesId(agencyOfAgent); 
+        List<Agencies> arrivals = agenciesFacade.findArrivalAgencies(agencyOfAgent.getAgenciesId());
+        return arrivals;
+    }
     
     /* Getters and Setters */
 
@@ -157,5 +176,38 @@ public class TripsController implements Serializable  {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+    public Boolean getDisable() {
+        return disable;
+    }
+
+    public void setDisable(Boolean disable) {
+        this.disable = disable;
+    }
+
+    public UsersFacade getUserFacade() {
+        return userFacade;
+    }
+
+    public void setUserFacade(UsersFacade userFacade) {
+        this.userFacade = userFacade;
+    }
+
+    public AgenciesFacade getAgenciesFacade() {
+        return agenciesFacade;
+    }
+
+    public void setAgenciesFacade(AgenciesFacade agenciesFacade) {
+        this.agenciesFacade = agenciesFacade;
+    }
+
+    public String getArrivalAgency() {
+        return arrivalAgency;
+    }
+
+    public void setArrivalAgency(String arrivalAgency) {
+        this.arrivalAgency = arrivalAgency;
+    }
+
     
 }

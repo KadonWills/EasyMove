@@ -5,7 +5,9 @@
  */
 package sessions;
 
+import entities.Agencies;
 import entities.Trips;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +30,5 @@ public class TripsFacade extends AbstractFacade<Trips> {
     public TripsFacade() {
         super(Trips.class);
     }
-    
+
 }

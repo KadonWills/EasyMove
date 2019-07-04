@@ -14,7 +14,7 @@
                 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
                       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">F</link>
             </ui:insert>
-                <title> <ui:insert name="title">EasyMove - Easy Travelling Experience</ui:insert> </title>
+            <title> <ui:insert name="title">EasyMove - Easy Travelling Experience</ui:insert> </title>
             <ui:insert name="scripts">
                 <script src="./js/jquery-3.4.1.min.js"></script>
                 <script src="./js/popper.min.js"></script>
@@ -97,50 +97,42 @@
                                 <hr />
                             </div>
                             <div class="sidebar-content hidden-sm-down">
+                                <ui:insert name="sidebar-menus">
+                                    <ul class="nav nav-pills flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="index.xhtml">Agencies</a>
+                                        </li>
 
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="agents.xhtml">Agents</a>
+                                        </li>
 
-                                <ul class="nav nav-pills flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="faces/trips.xhtml">Trips</a>
+                                        </li>
 
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="index.xhtml">Agencies</a>
-                                    </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="mails.xhtml">Mails</a>
+                                        </li>
 
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="agents.xhtml">Agents</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="trips.xhtml">Trips</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="mails.xhtml">Mails</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="privileges.xhtml">Privileges</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="reservation.xhtml">Reservations</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="clients.xhtml">Clients</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="buses.xhtml">Buses</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="stats.xhtml">Statistics</a>
-                                    </li>
-
-                                </ul>
-
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="privileges.xhtml">Privileges</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="reservation.xhtml">Reservations</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="clients.xhtml">Clients</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="buses.xhtml">Buses</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="stats.xhtml">Statistics</a>
+                                        </li>
+                                    </ul>
+                                </ui:insert>
                             </div>
-
                         </nav>
                     </ui:insert>
 
